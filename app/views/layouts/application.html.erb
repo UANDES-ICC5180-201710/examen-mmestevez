@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BaseExamen</title>
+    <title>Vapor</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <%= render 'layouts/navigation_bar', signed_in: user_signed_in? %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
   </body>
 </html>
