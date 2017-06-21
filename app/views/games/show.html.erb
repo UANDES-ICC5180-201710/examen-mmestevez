@@ -11,9 +11,15 @@
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @game.image_url %>
+<td><img src="<%= @game.image_url %>" class="img-rounded"/></td>
+
 </p>
+<button class="btn" onclick="purchased_button_clicked(<%= current_user.id %>, <%= @game.id %>)" id="purchased_button">
+  <span class="glyphicon glyphicon-cart <% if @game.user_purchased?(current_user.id) %> active <% else %>-empty <% end %>" id="like_button_icon"></span>
+</button>
+
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
+
+

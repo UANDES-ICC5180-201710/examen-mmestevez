@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :validatable, password_length: 8..50
+         :validatable
+  has_many :purchases
 
   validates :first_name, presence: true, length: {minimum: 3, maximum: 30}
   validates :last_name, presence: true, length: {minimum: 3, maximum: 30}
@@ -14,7 +15,6 @@ class User < ApplicationRecord
       uniqueness: true,
       confirmation: true
   }
-  validates :email_confirmation, presence: true
   validates :is_staff, default: false
 
   def to_s

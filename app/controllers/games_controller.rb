@@ -66,6 +66,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def purchase_button
+    @game.reverse_like(params[:user_id])
+    purchased = @game.user_liked?(params[:user_id])
+
+    render :json => { :purchased => purchased }
+  end
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_game
